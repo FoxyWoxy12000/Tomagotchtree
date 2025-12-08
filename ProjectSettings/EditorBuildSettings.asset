@@ -6,7 +6,7 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Packages/TransparentWindowManager/TransparentWindowManager.unity
+    path: Assets/Tomagotchtree.unity
     guid: da0ac11f5124f0546bcf75d7cbe7927e
   - enabled: 1
     path: Assets/Scenes/SampleScene.unity

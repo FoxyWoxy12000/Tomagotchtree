@@ -132,6 +132,8 @@ GameObject:
   - component: {fileID: 133999577}
   - component: {fileID: 133999576}
   - component: {fileID: 133999575}
+  - component: {fileID: 133999578}
+  - component: {fileID: 133999579}
   m_Layer: 0
   m_Name: TransparentWindowManager
   m_TagString: Untagged
@@ -209,6 +211,35 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 01c0c4510b541ba4b9c487e3ec7a50d4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DesktopWindowHelper
+--- !u!114 &133999578
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 133999572}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a9cbb17763f322438ff16caf46f9e8f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ClickThroughFix
+--- !u!114 &133999579
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 133999572}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f179d260e93dc0c448afb3e90bbc6493, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::WaterDragFix
+  waterLayer:
+    serializedVersion: 2
+    m_Bits: 16
+  dragScale: 1.15
+  darkenAmount: 0.75
 --- !u!1 &540379061
 GameObject:
   m_ObjectHideFlags: 0
@@ -524,6 +555,10 @@ PrefabInstance:
     - target: {fileID: 664811492490518207, guid: 19aa0b311a6c8874e8f9ec064ca2c0a0, type: 3}
       propertyPath: m_Name
       value: Water
+      objectReference: {fileID: 0}
+    - target: {fileID: 664811492490518207, guid: 19aa0b311a6c8874e8f9ec064ca2c0a0, type: 3}
+      propertyPath: m_Layer
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 671630181970981892, guid: 19aa0b311a6c8874e8f9ec064ca2c0a0, type: 3}
       propertyPath: m_LocalScale.x

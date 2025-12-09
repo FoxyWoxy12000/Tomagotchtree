@@ -4,6 +4,12 @@ public class WaterDebug : MonoBehaviour
 {
     void OnMouseDown()
     {
-        Debug.Log("WATER GOT CLICKED!");
+        Debug.Log(">>> WATER CLICKED <<<");
     }
+
+    void Awake()
+    {
+        Debug.Log("Water Awake. Position: " + transform.position);
+    }
+
 }

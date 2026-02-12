@@ -1,36 +1,43 @@
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class WaterDrag : MonoBehaviour
 {
-    private bool dragging;
+    private Camera mainCamera;
+    private bool isDragging = false;
     private Vector3 offset;
 
-    void OnMouseDown()
+    void Start()
     {
-        // This ONLY fires if a collider exists
-        dragging = true;
-
-        Vector3 mouseWorld = GetMouseWorld();
-        offset = transform.position - mouseWorld;
-    }
-
-    void OnMouseUp()
-    {
-        dragging = false;
+        mainCamera = Camera.main;
     }
 
     void Update()
     {
-        if (!dragging) return;
+        if (isDragging)
+        {
+            Vector2 screenPos = Mouse.current.position.ReadValue();
+            Vector3 mousepos = mainCamera.ScreenToWorldPoint(new Vector3(screenPos.x, screenPos.y, mainCamera.nearClipPlane));
+            mousepos.z = 0;
 
-        Vector3 mouseWorld = GetMouseWorld();
-        transform.position = mouseWorld + offset;
+            transform.position = mousepos + offset;
+        }
     }
 
-    Vector3 GetMouseWorld()
+    void OnMouseDown()
     {
-        Vector3 mouse = Input.mousePosition;
-        mouse.z = Mathf.Abs(Camera.main.transform.position.z);
-        return Camera.main.ScreenToWorldPoint(mouse);
+        isDragging = true;
+
+        // Calculate offset so object doesn't snap to mouse center
+        Vector2 screenPos = Mouse.current.position.ReadValue();
+        Vector3 mouseWorldPos = mainCamera.ScreenToWorldPoint(new Vector3(screenPos.x, screenPos.y, mainCamera.nearClipPlane));
+        mouseWorldPos.z = 0;
+
+        offset = transform.position - mouseWorldPos;
+    }
+
+    void OnMouseUp()
+    {
+        isDragging = false;
     }
 }
